@@ -2,10 +2,15 @@
     color: black !important;
 }
 
+.loginHeading{
+    text-align: center;
+}
 .loginForm{
-    padding: 50px;
-    right:50;
-    bottom: 50;
+    padding-left: 10%;
+    padding-right: 10%;
+    border: 1px solid grey;
+    border-radius: 5px;
+    margin: 50px 50px;
 }
 
 .justification{
