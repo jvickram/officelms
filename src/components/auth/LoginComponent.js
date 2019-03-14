@@ -5,8 +5,8 @@ class Login extends Component {
     constructor(props){
         super(props);
         this.state={
-            email:"admin@confusion.com",
-            password:"test",
+            // email:"admin@confusion.com",
+            // password:"test",
             username:"",
             pass:"",
             users:[]
@@ -21,32 +21,38 @@ class Login extends Component {
 
     login(e){
         e.preventDefault();
-        let user = this.state.username;
-        let pass1= this.state.password;
+        // let user = this.state.username;
+        // let pass1= this.state.password;
         let cur_user = this.state.username;
         let cur_pass = this.state.pass;
-        if(user===cur_user && pass1===cur_pass){
+        let condition = this.state.users.filter((user) => ( 
+            user.email===cur_user && user.pass===cur_pass));
+        console.log("condition",condition)
+
+        // if(user===cur_user && pass1===cur_pass){
+        if(condition){
             alert("User Authenticated");
         }
         else alert("Wrong Credentials")
         
     }
 
-    conmponentDidMount(){
+    componentWillMount() {
+        this.setState({ isFetching: true });
         fetch("http://localhost:5000/users")
-        .then(res => res.json())
-        // .then(users => console.log(users))
-        .then(users => this.setState({users:users}))
-    }
+          .then(res => res.json())
+          .then(users => this.setState({ users: users }));
+      }
 
   render() {
 
-    // const UserList = this.state.users.map((user) => (
-    //     <div key={user.id}>
-    //         <p>{user.email}</p>
-    //         <p>{user.password}</p>
-    //     </div>
-    // ))
+    const userdata = this.state.users.map((user, index) => (
+        <ul key={user.id}>
+          <li>User id: {user.id}</li>
+          <li>Email: {user.email}</li>
+          <li>Password: {user.pass}</li>
+        </ul>
+    ));
 
     return (
       <div >
@@ -81,13 +87,8 @@ class Login extends Component {
         </FormGroup>
         </Form>
 
-        {/* <h3>Users Fetched</h3>
-            {this.state.users.map((user) => (
-            <div key={user.id}>
-                <p>{user.email}</p>
-                <p>{user.password}</p>
-            </div>
-            ))} */}
+        <h3>User Fetched</h3>
+            {userdata}
       </div>
     )
   }
