@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Button, Form, FormGroup, Label, Input, Col, } from 'reactstrap';
-import history from 'history';
 
 class Registration extends Component {
 
@@ -53,7 +52,6 @@ class Registration extends Component {
         })
         .then(res => res.json())
         .then(data1 => alert(data1))
-        .then(res => history.push('/login'))
 
     }
       }
