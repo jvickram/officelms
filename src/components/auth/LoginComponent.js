@@ -9,6 +9,7 @@ class Login extends Component {
             // password:"test",
             username:"",
             pass:"",
+            isAuthenticated:false,
             users:[]
         }
         this.onChange=this.onChange.bind(this);
@@ -28,14 +29,17 @@ class Login extends Component {
         let condition = this.state.users.filter((userb) => ( 
             userb.email===cur_user && userb.pass===cur_pass));
         console.log("condition",condition)
-
-        // if(user===cur_user && pass1===cur_pass){
         if(condition.length>0){
-            alert("User Authenticated");
+            this.setState({isAuthenticated : true}); 
+            setTimeout(() => {
+                console.log("User Authenticated :"+ this.state.isAuthenticated);
+            }, 1000); 
         }
         else alert("Wrong Credentials")
         
     }
+
+    
 
     componentWillMount() {
         this.setState({ isFetching: true });
