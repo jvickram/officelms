@@ -25,12 +25,12 @@ class Login extends Component {
         // let pass1= this.state.password;
         let cur_user = this.state.username;
         let cur_pass = this.state.pass;
-        let condition = this.state.users.filter((user) => ( 
-            user.email===cur_user && user.pass===cur_pass));
+        let condition = this.state.users.filter((userb) => ( 
+            userb.email===cur_user && userb.pass===cur_pass));
         console.log("condition",condition)
 
         // if(user===cur_user && pass1===cur_pass){
-        if(condition){
+        if(condition.length>0){
             alert("User Authenticated");
         }
         else alert("Wrong Credentials")
