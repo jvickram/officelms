@@ -1,22 +1,23 @@
 import React, { Component } from 'react';
-import { Button, Form, FormGroup, Label, Input, Col, } from 'reactstrap';
+import { Form} from 'reactstrap';
+import InputField from './../InputField';
+import ButtonField from '../ButtonField';
 
 class Registration extends Component {
 
   constructor(props){
     super(props);
     this.state={
-        // email:"admin@confusion.com",
-        // password:"test",
-        // employeeID:"",
         firstName:"",
         lastName:"",
         email:"",
+        linemanager:"",
         Password:"",
         confirmPassword:"",
     }
     this.onChange=this.onChange.bind(this);
     this.register=this.register.bind(this);
+    this.reset=this.reset.bind(this);
   }
 
   onChange(e){
@@ -36,11 +37,15 @@ class Registration extends Component {
       }
       else {
         const userDetails = {
-          // empid:this.state.employeeID,
           firstName:this.state.firstName,
           lastName:this.state.lastName,
           email:this.state.email,
-          pass:this.state.Password
+          pass:this.state.Password,
+          linemanager:this.state.linemanager,
+          sick_leave_allocated:7,
+          sick_leave_remaining:7,
+          casual_leave_allocated:20,
+          casual_leave_remaining:20
         } 
 
         fetch("http://localhost:5000/users",{
@@ -51,24 +56,22 @@ class Registration extends Component {
           "body":JSON.stringify(userDetails)
         })
         .then(res => res.json())
-        .then(data1 => alert(data1))
+        .then(alert("User Registered"))
+        .then(this.props.history.push('/login'))
 
+        }
     }
-      }
-       
+  }
 
-    // let cur_user = this.state.username;
-    // let cur_pass = this.state.pass;
-    // let condition = this.state.users.filter((userb) => ( 
-    //     userb.email===cur_user && userb.pass===cur_pass));
-    // console.log("condition",condition)
-
-    // // if(user===cur_user && pass1===cur_pass){
-    // if(condition.length>0){
-    //     alert("User Authenticated");
-    // }
-    // else alert("Wrong Credentials")
-    
+  reset(e){
+      setTimeout(      
+    this.setState({
+          firstName:"",
+          lastName:"",
+          email:"",
+          Password:"",
+          confirmPassword:""
+        }), 500)
   }
 
   render() {
@@ -76,72 +79,52 @@ class Registration extends Component {
       <div>
         <h1 style={{textAlign:"center"}}> Employee Registration</h1>
         <Form>
-          {/* <FormGroup row className = "justification">
-            <Label md={2}>EmployeeID</Label>
-            <Col md={4}>
-              <Input type = "text"
-                name="employeeID"
-                placeholder = "EmpID" 
-                onChange={this.onChange}
-                value={this.state.employeeID} />
-            </Col>
-          </FormGroup> */}
-          <FormGroup row className = "justification">
-            <Label md={2}>First Name</Label>
-            <Col md={4}>
-              <Input type = "text" 
-               name="firstName"
-               placeholder = "First Name" 
-               onChange={this.onChange}
-               value={this.state.firstName} />
-            </Col>
-          </FormGroup>
-          <FormGroup row className = "justification" style = {{justifyContent:'center'}}>
-            <Label md={2}>Last Name</Label>
-            <Col md={4}>
-              <Input type = "text" 
-               name="lastName"
-               placeholder = "Last Name" 
-               onChange={this.onChange}
-               value={this.state.lastName} />
-            </ Col>
-          </FormGroup>
-          <FormGroup row className = "justification" style = {{justifyContent:'center'}}>
-          <Label md={2}>Email</Label>
-            <Col md={4}>
-              <Input type = "email" 
-              name="email"
-              placeholder = "Email"  
-              onChange={this.onChange}
-              value={this.state.email} />
-            </ Col>
-          </FormGroup>
-          <FormGroup row className = "justification">
-            <Label md={2}>Password</Label>
-            <Col md={4}> 
-              <Input type = "password" 
-              name="Password"
-              placeholder = "Password"  
-              onChange={this.onChange}
-              value={this.state.Password} />
-            </ Col>
-          </FormGroup>
-          <FormGroup row className = "justification">
-          <Label md={2}>Confirm Password</Label>
-            <Col md={4}>
-              <Input type = "password" 
-              name="confirmPassword"
-               placeholder = "Confirm Password"  
-              onChange={this.onChange}
-              value={this.state.confirmPassword} />
-            </ Col>
-          </FormGroup>
-            <FormGroup row className = "justification">
-            <Col md={{size:4,offset:4}}>
-             <Button type="submit" onClick={this.register}>Sign Up</Button>
-             <Button style = {{marginLeft: '30px'}}>Reset</Button>
-             </Col>
-            </FormGroup>
+          <InputField Type="text" 
+                      Name="firstName"
+                      Placeholder="First Name"
+                      OnChange={this.onChange}
+                      Value={this.state.firstName}
+          />
+          <InputField Type="text" 
+                      Name="lastName"
+                      Placeholder="Last Name"
+                      OnChange={this.onChange}
+                      Value={this.state.lastName}
+          />
+          <InputField Type="text" 
+                      Name="email"
+                      Placeholder="Email"
+                      OnChange={this.onChange}
+                      Value={this.state.email}
+          />
+          <InputField Type="text" 
+                      Name="linemanager"
+                      Placeholder="Line Manager"
+                      OnChange={this.onChange}
+                      Value={this.state.linemanager}
+          />
+          <InputField Type="password" 
+                      Name="Password"
+                      Placeholder="Password"
+                      OnChange={this.onChange}
+                      Value={this.state.Password}
+          />
+          <InputField Type="password" 
+                      Name="confirmPassword"
+                      Placeholder="Confirm Password"
+                      OnChange={this.onChange}
+                      Value={this.state.confirmPassword}
+          />
+          <ButtonField 
+                    Type ="submit"
+                    OnClick={this.register}
+            >Sign Up
+          </ButtonField>
+          <ButtonField 
+                    Type ="reset"
+                    OnClick={this.reset}
+          >Reset
+          </ButtonField>
         </Form>
       </div>
     )
