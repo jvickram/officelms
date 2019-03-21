@@ -6,7 +6,7 @@ function InputField(props) {
   return (
     <FormGroup row className = "justification">
             <Col md={4}>
-                <Input type={props.Type} 
+                 <Input type={props.Type} 
                     name={props.Name} 
                     placeholder={props.Placeholder}
                     onChange={props.OnChange}

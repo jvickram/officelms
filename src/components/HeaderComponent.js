@@ -18,11 +18,12 @@ class Header extends Component {
       isOpen: !this.state.isOpen
     });
   }
+
   render() {
     return (
       <div>
       <Navbar color="dark" dark expand="md">
-        <NavbarBrand href="/">Office LMS</NavbarBrand>
+        <NavbarBrand href="/">Advanced LMS</NavbarBrand>
         <NavbarToggler onClick={this.toggleNav} />
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="ml-auto" navbar>

@@ -5,6 +5,8 @@ import Registration from './components/auth/RegistrationComponent';
 import Login from './components/auth/LoginComponent';
 import {BrowserRouter as Router, Route } from "react-router-dom";
 import EmpDashboard from './components/EmpDashboardComponent';
+import EmpInfo from './components/EmpInfoComponent';
+import ApplicationComponent from "./components/ApplicationComponent";
 
 class App extends Component {
   render() {
@@ -14,7 +16,9 @@ class App extends Component {
           <Route path="/" component={Home} />
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Registration} />
-          <Route path="/empdashboard" component={EmpDashboard} />
+          <Route path="/empdashboard/:userid" component={EmpDashboard} />
+          <Route path="/empinfo/:userid" component={EmpInfo} />
+          <Route path="/appform/:userid" component={ApplicationComponent} />
       </div>
   </Router>
     );

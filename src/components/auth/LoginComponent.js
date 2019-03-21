@@ -24,20 +24,26 @@ class Login extends Component {
         e.preventDefault();
         let cur_user = this.state.username;
         let cur_pass = this.state.pass;
-        let usercheck = this.state.users.filter((userb) => ( 
+
+        if(cur_user.length <=0 || cur_pass <=0){
+            alert("Login fields can't be empty!!!")
+        }else {
+
+        let curUser = this.state.users.filter((userb) => ( 
             userb.email===cur_user && userb.pass===cur_pass));
-        console.log("usercheck",usercheck)
-        if(usercheck.length>0){
+        console.log("curUser",curUser)
+        if(curUser.length>0){
             this.setState({isAuthenticated : true}); 
             setTimeout(() => {
                 console.log("User Authenticated :"+ this.state.isAuthenticated);
-                this.props.history.push('/EmpDashboard');
+                console.log("User :"+ curUser[0].id);
+                this.props.history.push(`/EmpDashboard/`+curUser[0].id);
             }, 1000); 
         
 
         }
         else alert("Wrong Credentials")
-        
+    }
     }
     
 
@@ -57,12 +63,7 @@ class Login extends Component {
           <li>Email: <u>{user.email}</u></li>
           <li>Password: <u>{user.pass}</u></li>
           <li>Full Name: <u>{user.firstName} {user.lastName}</u></li>
-          <li>Line Manager : <u>{user.linemanager}</u></li>
-          <h6>Leaves Details</h6>
-          <li>Sick Leave Allocated: <u>{user.sick_leave_allocated}</u></li>
-          <li>Sick Leave Remaining: <u>{user.sick_leave_remaining}</u></li>
-          <li>Casual Leave Allocated: <u>{user.casual_leave_allocated}</u></li>
-          <li>Casual Leave Remaining: <u>{user.casual_leave_remaining}</u></li><hr/>
+          <hr/>
         </ul>
 
     ));
