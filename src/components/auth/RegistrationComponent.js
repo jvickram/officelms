@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, FormGroup, Row, Col } from 'reactstrap';
+import { Form } from 'reactstrap';
 import InputField from './../InputField';
 import ButtonField from '../ButtonField';
 

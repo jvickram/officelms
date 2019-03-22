@@ -91,8 +91,8 @@ class Login extends Component {
      
         </Form>
 
-        {/* <h3>User Fetched</h3>
-            {userdata} */}
+        <h3>User Fetched</h3>
+            {userdata}
       </div>
     )
   }
