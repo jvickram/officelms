@@ -23,13 +23,16 @@ class Application extends Component {
         this.setState({[e.target.name]:e.target.value})
     }
     onSubmit(){
+      const DATE_OPTIONS = {year: 'numeric', month: 'numeric', day: 'numeric' };
         const appData = {
             empid: this.state.userId,
             type:this.state.type,
             days:this.state.days,
             from:this.state.from,
             to:this.state.to,
-            reason:this.state.reason
+            reason:this.state.reason,
+            status:'Pending',
+            applicationDate:new Date().toLocaleDateString('en-US', DATE_OPTIONS)
         }
         // alert ("Application details are: " + JSON.stringify(appData));
         fetch("http://localhost:5000/applications", {

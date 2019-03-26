@@ -7,6 +7,8 @@ import {BrowserRouter as Router, Route } from "react-router-dom";
 import EmpDashboard from './components/EmpDashboardComponent';
 import EmpInfo from './components/EmpInfoComponent';
 import ApplicationComponent from "./components/ApplicationComponent";
+import ApplicationList from "./components/ApplicationList";
+
 
 class App extends Component {
   render() {
@@ -19,6 +21,8 @@ class App extends Component {
           <Route path="/empdashboard/:userid" component={EmpDashboard} />
           <Route path="/empinfo/:userid" component={EmpInfo} />
           <Route path="/appform/:userid" component={ApplicationComponent} />
+          <Route path="/applist/:userid" component={ApplicationList} />
+
       </div>
   </Router>
     );

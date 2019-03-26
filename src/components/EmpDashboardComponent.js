@@ -67,7 +67,7 @@ class EmpDashboard extends Component {
                     <NavLink className="nav-link" to={`/appform/`+this.state.EmpId}><Button> Apply Leave </Button></NavLink>
                 </NavItem>
                 <NavItem>
-                    <NavLink className="nav-link" to="#"><Button> Applications </Button></NavLink>
+                    <NavLink className="nav-link" to={`/applist/` +this.state.EmpId}><Button> Applications </Button></NavLink>
                 </NavItem>
                 </Nav>
               </Collapse>
