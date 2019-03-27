@@ -69,7 +69,7 @@ class Login extends Component {
     ));
 
     return (
-      <div >
+      <div className="container">
         <Form>
         <h1 className="loginHeading">Login</h1>
         <InputField Type="text" 

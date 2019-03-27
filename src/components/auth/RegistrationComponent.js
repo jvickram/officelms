@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form } from 'reactstrap';
+import { Form, Row, Col } from 'reactstrap';
 import InputField from './../InputField';
 import ButtonField from '../ButtonField';
 
@@ -76,7 +76,7 @@ class Registration extends Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
         <h1 style={{textAlign:"center"}}> Employee Registration</h1>
         <Form>
           <InputField Type="text" 
@@ -115,16 +115,24 @@ class Registration extends Component {
                       OnChange={this.onChange}
                       Value={this.state.confirmPassword}
           />
-          <ButtonField 
+          
+          
+          <Row>
+          <Col md={{ size: 'auto', offset: 5 }} >
+            <ButtonField 
                     Type ="submit"
                     OnClick={this.register}
-            >Sign Up
-          </ButtonField>
-          <ButtonField 
+              >Sign Up
+            </ButtonField>
+          </Col>
+          <Col md={{ size: 'auto' }} >
+            <ButtonField 
                     Type ="reset"
                     OnClick={this.reset}
-          >Reset
-          </ButtonField>
+            >Reset
+            </ButtonField>
+          </Col>
+        </Row>
         </Form>
       </div>
     )
