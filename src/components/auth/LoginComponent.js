@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Form } from 'reactstrap';
 import InputField from './../InputField';
 import ButttonField from './../ButtonField';
+import { Users } from '../../shared/users';
 
 class Login extends Component {
     constructor(props){
@@ -10,7 +11,7 @@ class Login extends Component {
             username:"",
             pass:"",
             isAuthenticated:false,
-            users:[]
+            users:Users
         }
         this.onChange=this.onChange.bind(this);
         this.login=this.login.bind(this);
@@ -48,11 +49,8 @@ class Login extends Component {
     
 
     componentWillMount() {
-        this.setState({ isFetching: true });
-        fetch("http://localhost:5000/users")
-          .then(res => res.json())
-          .then(users => this.setState({ users: users }));
-      }
+        // this.setState({ isFetching: true });
+            }
 
   render() {
 
@@ -91,7 +89,7 @@ class Login extends Component {
      
         </Form>
 
-        <h3>User Fetched</h3>
+        <h3>All Users</h3>
             {userdata}
       </div>
     )

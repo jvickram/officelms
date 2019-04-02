@@ -3,6 +3,8 @@ import { Form, Label, Col, Input, FormGroup } from "reactstrap";
 import InputField from "./InputField";
 import ButtonField from "./ButtonField";
 import { Link } from 'react-router-dom';
+import { Users } from '.././shared/users';
+import { Applications } from '.././shared/applications';
 
 class Application extends Component {
     constructor(props){
@@ -56,7 +58,7 @@ class Application extends Component {
     fetch("http://localhost:5000/users/"+userId)
     .then(res => res.json())
     .then(response => this.setState({name: response.firstName + " " + response.lastName}))
-    .then(res => console.log("User :" + userId + " Data Fetched with name"))
+    .then(res => console.log("User :" + userId ))
     }
 
   render() {
